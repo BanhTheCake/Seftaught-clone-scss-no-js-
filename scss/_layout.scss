@@ -3,6 +3,10 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 2rem;
+    overflow: hidden;
+    @include smobile {
+        padding: 0;
+    }
 }
 
 // header
@@ -17,6 +21,10 @@
     clip-path: ellipse(60% 60% at 50% 33%);
     border-radius: 0.2rem;
     position: relative;
+    @include smobile {
+        clip-path: ellipse(72% 66% at 49% 34%);
+        max-height: 400px;
+    }
     &__logo {
         width: 100px;
         height: auto;
@@ -54,6 +62,9 @@
         }
         &--btn {
             margin-bottom: 4rem;
+            @include smobile {
+                margin: 0;
+            }
         }
     }
 }
@@ -65,6 +76,11 @@
     background-color: $color-gray;
     padding: 22rem 2rem;
     margin-top: -20rem;
+    @include smobile {
+        padding: 40rem 2rem;
+        padding-bottom: 8rem;
+        margin-top: -34rem;
+    }
     &-text {
         margin-bottom: 4rem;
 
@@ -73,16 +89,26 @@
             font-weight: bold;
             color: $color-text;
             margin-bottom: 2rem;
+            @include smobile {
+                font-size: 2.6rem;
+            }
         }
         &__sub {
             font-size: 1.4rem;
             color: $color-text;
             line-height: 2.2rem;
+            @include smobile {
+                font-size: 2.2rem;
+                line-height: 3.4rem;
+            }
         }
     }
     &-picture {
         display: flex;
         flex-wrap: wrap;
+        @include smobile {
+            margin-top: 2rem;
+        }
         &-img {
             width: 50%;
             object-fit: cover;
@@ -94,6 +120,13 @@
             &:hover {
                 transform: scale(1.1);
                 box-shadow: 0rem 0rem 0rem 0.1rem $color-text, 0rem 0rem 2rem rgba($color-black, 0.4);
+            }
+            @include smobile {
+                margin: auto;
+                width: 80%;
+                max-width: 400px;
+                text-align: center;
+                margin-bottom: 1.2rem;
             }
         }
         &:hover &-img:not(:hover) {
@@ -107,13 +140,36 @@
     height: 100vh;
     margin-top: -10rem;
     background-image: linear-gradient(to right, rgba($color-primary, 0.5), rgba($color-main, 0.5)), url("../img/1.avif");
+    background-position: center;
+    background-size: cover;
     clip-path: ellipse(70% 50% at 50% 50%);
     position: relative;
+    @include smobile {
+        margin: 0;
+        height: 340px;
+        clip-path: none;
+        overflow: auto;
+    }
+    @include tablet {
+        clip-path: unset;
+        padding: 0;
+        overflow: auto;
+        max-height: 700px;
+    }
     &-layout {
         width: 100%;
         padding: 0 2rem;
         position: absolute;
         @extend %position-center;
+        @include smobile {
+            height: 100%;
+            padding-top: 20px;
+        }
+        @include tablet {
+            height: 100%;
+            padding-top: 20px;
+            display: flex;
+        }
     }
 }
 
@@ -128,16 +184,26 @@
     padding: 4rem 0;
     transition: 0.2s;
     cursor: pointer;
+    @include smobile {
+        padding: 6rem 0;
+    }
     &__icon {
         color: rgba($color-main, 0.6);
         font-size: 6rem;
         margin-bottom: 1rem;
+        @include smobile {
+            font-size: 14rem;
+        }
     }
     &__title {
         font-size: 1.6rem;
         color: $color-text;
         font-weight: bold;
         margin-bottom: 1rem;
+        @include smobile {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
     }
     &__sub {
         padding: 0 2rem;
@@ -146,6 +212,10 @@
         flex: 1;
         color: $color-text;
         line-height: 2rem;
+        @include smobile {
+            font-size: 2.2rem;
+            line-height: 3.4rem;
+        }
     }
     &:hover {
         transform: translateY(-8px);
@@ -165,7 +235,10 @@
         position: relative;
         transition: 0.2s;
         perspective: 100rem;
-
+        @include smobile {
+            max-width: 250px;
+            height: 300px;
+        }
         &-card {
             width: 100%;
             height: 100%;
@@ -189,6 +262,10 @@
                 background-size: cover;
                 clip-path: ellipse(60% 60% at 50% 33%);
                 border-radius: 4rem 4rem 0 0;
+                @include smobile {
+                    height: 28rem;
+                    clip-path: ellipse(70% 60% at 50% 33%);
+                }
             }
             &-title {
                 position: absolute;
@@ -197,6 +274,10 @@
                 color: $color-white;
                 font-size: 3rem;
                 font-weight: lighter;
+                @include smobile {
+                    top: 14rem;
+                    right: 2rem;
+                }
                 &__first {
                     margin-left: auto;
                     width: fit-content;
@@ -226,6 +307,9 @@
                     &:not(:last-child) {
                         border-bottom: 1px solid $color-text;
                     }
+                    @include smobile {
+                        font-size: 2.2rem;
+                    }
                 }
             }
             &--back {
@@ -244,6 +328,9 @@
                 font-size: 2rem;
                 color: $color-white;
                 font-weight: lighter;
+                @include smobile {
+                    font-size: 3rem;
+                }
             }
             &__price {
                 display: block;
@@ -252,6 +339,9 @@
                 font-size: 4rem;
                 color: $color-white;
                 font-weight: lighter;
+                @include smobile {
+                    font-size: 4.6rem;
+                }
             }
             &__btn {
                 width: 100%;
@@ -326,6 +416,14 @@
     border-radius: 100rem;
     box-shadow: 0rem 0rem 0.6rem rgba($color-black, 0.2);
     padding: 4rem;
+    @include smobile {
+        max-width: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 2rem;
+    }
     &--first .testimonials-img::after {
         content: "LIONEL MESHI";
     }
@@ -349,6 +447,12 @@
     clip-path: circle(50% at 50% 50%);
     shape-outside: circle(50% at 50% 50%);
     margin-right: 3rem;
+    @include smobile {
+        float: unset;
+        shape-outside: unset;
+        margin: 0;
+        margin-bottom: 2rem;
+    }
     position: relative;
     & img {
         width: 100%;
@@ -378,6 +482,19 @@
         font-size: 1.6rem;
         font-weight: bold;
         margin-bottom: 1rem;
+        @include smobile {
+            text-align: center;
+            font-size: 2.2rem;
+        }
+    }
+    @include smobile {
+        height: auto;
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 3rem;
+    }
+    @include tablet {
+        padding-left: 10rem;
     }
 }
 // section testimonials end
@@ -404,6 +521,11 @@
         height: 100%;
         background-color: rgba($color-white, 0.5);
         clip-path: circle(85% at 0 50%);
+        @include smobile {
+            clip-path: unset;
+            background-color: rgba($color-white, 0.4);
+            width: 100%;
+        }
     }
 }
 
@@ -412,14 +534,25 @@
     min-width: 300px;
     position: relative;
     z-index: 2;
+    @include smobile {
+        width: 100%;
+        min-width: unset;
+    }
     &__btn {
         margin: 0;
+        @include smobile {
+            margin: auto;
+            margin-bottom: 2rem;
+        }
     }
 }
 
 .form-group {
     margin-bottom: 4rem;
     position: relative;
+    @include smobile {
+        margin-bottom: 6rem;
+    }
     & input {
         width: 100%;
         height: 46px;
@@ -432,6 +565,9 @@
         font-size: 1.6rem;
         border-bottom: 3px solid transparent;
         transition: 0.2s;
+        @include smobile {
+            font-size: 2.2rem;
+        }
         &:focus {
             border-bottom: 3px solid $color-blue;
         }
@@ -439,6 +575,9 @@
             & + label {
                 transform: translateY(100%);
                 opacity: 1;
+                @include smobile {
+                    transform: translateY(120%);
+                }
             }
             &:invalid {
                 border-bottom: 3px solid #ff7730;
@@ -454,6 +593,9 @@
         opacity: 0;
         transition: 0.2s;
         z-index: -1;
+        @include smobile {
+            font-size: 2.2rem;
+        }
     }
 }
 .form-group-radio {
@@ -461,6 +603,10 @@
     &:not(:last-of-type) {
         margin-right: 3rem;
         margin-bottom: 4rem;
+        @include smobile {
+            margin-top: 2rem;
+            margin-right: 8rem;
+        }
     }
     & label {
         cursor: pointer;
@@ -469,6 +615,10 @@
         justify-content: center;
         font-size: 1.6rem;
         color: $color-text;
+        @include smobile {
+            font-size: 2.2rem;
+            color: $color-black;
+        }
         & span {
             display: inline-block;
             width: 18px;
@@ -477,6 +627,10 @@
             border: 3px solid $color-blue;
             position: relative;
             margin-right: 1rem;
+            @include smobile {
+                width: 24px;
+                height: 24px;
+            }
             &::before {
                 content: "";
                 position: absolute;
@@ -499,6 +653,9 @@
 .footer {
     padding: 6rem 2rem;
     background-color: $color-dark-gray;
+    @include smobile {
+        padding-bottom: 0;
+    }
     &__logo {
         text-align: center;
         & img {
@@ -527,6 +684,9 @@
             color: $color-blue;
             box-shadow: 0rem 1rem 2rem rgba($color-black, 0.2);
         }
+        @include smobile {
+            font-size: 2rem;
+        }
     }
     &-copyright {
         color: $color-white;
@@ -534,6 +694,10 @@
         border-top: 1px solid $color-white;
         font-size: 1.4rem;
         line-height: 2rem;
+        @include smobile {
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+        }
     }
 }
 // footer end
@@ -570,8 +734,25 @@
         justify-content: center;
         transform: translate(-50%, -50%) scale(0.4);
         transition: 0.4s;
+        @include smobile {
+            flex-direction: column;
+        }
         &__img {
-            width: 35%;
+            width: 40%;
+            @include smobile {
+                // display: flex;
+                // & img {
+                //     width: 50%;
+                // }
+                display: none;
+            }
+            @include tablet {
+                // display: flex;
+                // & img {
+                //     width: 50%;
+                // }
+                display: none;
+            }
         }
         &__close {
             &:link,
@@ -580,6 +761,9 @@
                 padding: 1rem 2rem;
                 font-size: 3rem;
                 text-decoration: none;
+                @include smobile {
+                    font-size: 4rem;
+                }
             }
             position: absolute;
             top: 0;
@@ -595,17 +779,34 @@
         }
     }
     &-text {
-        width: 70%;
         padding: 4rem;
+        width: 60%;
+        @include smobile {
+            width: 100%;
+        }
+        @include tablet {
+            width: 100%;
+        }
         &__title {
             margin: 0;
             margin-bottom: 1rem;
+            @include smobile {
+                margin: auto;
+                margin-bottom: 2rem;
+            }
+            @include tablet {
+                margin: auto;
+            }
         }
         &__sub {
             font-size: 1.8rem;
             color: $color-text;
             font-weight: bold;
             margin-bottom: 2rem;
+            @include smobile {
+                font-size: 2.2rem;
+                line-height: 3rem;
+            }
         }
         &-box {
             display: flex;
@@ -613,6 +814,14 @@
             line-height: 2rem;
             margin-bottom: 2rem;
             color: $color-text;
+            @include smobile {
+                flex-direction: column;
+                font-size: 1.8rem;
+                line-height: 2.6rem;
+            }
+            @include tablet {
+                flex-direction: column;
+            }
             &__first {
                 width: 50%;
                 margin-right: 2rem;
@@ -626,9 +835,29 @@
                     height: 100%;
                     background-color: $color-text;
                 }
+                @include smobile {
+                    width: 100%;
+                    margin-bottom: 2rem;
+                    &::before {
+                        display: none;
+                    }
+                }
+                @include tablet {
+                    width: 100%;
+                    margin-bottom: 2rem;
+                    &::before {
+                        display: none;
+                    }
+                }
             }
             &__second {
                 width: 50%;
+                @include smobile {
+                    width: 100%;
+                }
+                @include tablet {
+                    width: 100%;
+                }
             }
         }
     }
@@ -654,6 +883,16 @@
         background-color: $color-white;
         cursor: pointer;
         z-index: 99999;
+        @include smobile {
+            top: 2rem;
+            right: 2rem;
+            width: 8rem;
+            height: 8rem;
+        }
+        @include tablet {
+            top: 2rem;
+            right: 2rem;
+        }
         & span {
             position: absolute;
             width: 60%;
@@ -714,6 +953,16 @@
         border-radius: 50%;
         transition: 0.8s;
         z-index: 999;
+        @include smobile {
+            top: 2rem;
+            right: 2rem;
+            width: 8rem;
+            height: 8rem;
+        }
+        @include tablet {
+            top: 2rem;
+            right: 2rem;
+        }
     }
     &__layout {
         position: fixed;
@@ -724,6 +973,7 @@
         z-index: 999;
         transition: 0.4s;
         opacity: 0;
+        visibility: hidden;
     }
     &__list {
         position: absolute;
@@ -756,5 +1006,6 @@
     & input:checked ~ &__layout {
         width: 100vw;
         opacity: 1;
+        visibility: visible;
     }
 }

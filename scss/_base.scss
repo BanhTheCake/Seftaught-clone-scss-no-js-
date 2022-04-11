@@ -13,6 +13,56 @@ $color-text: #777777;
 $color-blue: #5a73fc;
 $color-dark-gray: #333;
 
+$mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+// @mixin smobile {
+//     @media (max-width: #{$mobile-width - 0.02px}) {
+//         @content;
+//     }
+// }
+@mixin smobile {
+    @media screen and (max-width: #{$tablet-width - 0.02px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 0.02px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
+// @mixin responsive($breakpoint) {
+//     @if ($breakpoint == pc) {
+//         @media only screen and (max-width: 1200px) {
+//             @content;
+//         }
+//     }
+//     @if ($breakpoint == table) {
+//         @media only screen and (max-width: 1023.98px) {
+//             @content;
+//         }
+//     }
+//     @if ($breakpoint == mobile) {
+//         @media only screen and (max-width: 767.98px) {
+//             @content;
+//         }
+//     }
+//     @if ($breakpoint == smobile) {
+//         @media only screen and (max-width: 480px) {
+//             @content;
+//         }
+//     }
+// }
+
 * {
     margin: 0px;
     padding: 0px;
@@ -28,7 +78,16 @@ html {
     font-size: 62.5%;
     font-family: "Lato", sans-serif;
     box-sizing: border-box;
+
+    @include smobile {
+        font-size: 40%;
+    }
 }
+
+body {
+    -webkit-text-size-adjust: none;
+}
+// mixin and extend
 
 %position-center {
     top: 50%;
@@ -100,6 +159,11 @@ html {
     &.btn--animate {
         animation: FadeInBottom ease-in-out 1.6s;
     }
+
+    @include smobile() {
+        font-size: 2.4rem;
+        padding: 2rem 3rem;
+    }
 }
 
 .btn-text {
@@ -111,6 +175,10 @@ html {
     border-bottom: 1px solid rgba($color-main, 0.8);
     font-size: 1.4rem;
     transition: 0.2s;
+    @include smobile {
+        font-size: 2.2rem;
+        line-height: 3.4rem;
+    }
     &:hover {
         background-color: rgba($color-main, 0.8);
         color: $color-white;
@@ -140,6 +208,9 @@ html {
     &:hover {
         transform: skewY(5deg) scale(1.05);
         text-shadow: 0rem 1.6rem 2rem rgba($color-black, 0.4);
+    }
+    @include smobile {
+        font-size: 3.6rem;
     }
 }
 
